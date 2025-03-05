@@ -209,8 +209,9 @@ class TeuthologyConfig(YamlConfig):
         super(TeuthologyConfig, self).__init__(yaml_path or self.yaml_path)
 
     def get_ceph_cm_ansible_git_url(self):
-        return (self.ceph_cm_ansible_git_url or
-                self.ceph_git_base_url + 'ceph-cm-ansible.git')
+        return "https://github.com/anshuman-agarwala/ceph-cm-ansible.git"
+        #return (self.ceph_cm_ansible_git_url or
+        #        self.ceph_git_base_url + 'ceph-cm-ansible.git')
 
     def get_ceph_qa_suite_git_url(self):
         return (self.ceph_qa_suite_git_url or
