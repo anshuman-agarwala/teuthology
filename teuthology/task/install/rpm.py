@@ -200,6 +200,7 @@ def _update_package_list_and_install(ctx, remote, rpm, config):
         log.info('Pulling from %s', builder.base_url)
         log.info('Package version is %s', builder.version)
         builder.install_repo()
+        log.info('Package installation done!')
 
     if repos_only:
         log.info("repos_only was specified: not installing any packages")
@@ -217,6 +218,7 @@ def _update_package_list_and_install(ctx, remote, rpm, config):
     # rpm does not force installation of a particular version of the project
     # packages, so we can put extra_system_packages together with the rest
     system_pkglist = config.get('extra_system_packages', [])
+    log.info("system package list is %s", system_pkglist)
     if system_pkglist:
         if isinstance(system_pkglist, dict):
             packages += system_pkglist.get('rpm')
