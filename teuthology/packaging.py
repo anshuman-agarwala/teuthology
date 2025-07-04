@@ -802,7 +802,7 @@ class GitbuilderProject(object):
                 '-p', '1', url, 'ceph-rpm-under-test',
             ])
         else:
-            self.remote.run(args=['sudo', 'yum', '-y', 'install', url])
+            self.remote.run(args=['sudo', 'yum', '--setopt=sslverify=false', '-y', 'install', url])
 
     def _install_deb_repo(self):
         self.remote.run(
