@@ -231,9 +231,9 @@ def _update_package_list_and_install(ctx, remote, rpm, config):
     if dist_release not in ['opensuse', 'sle']:
         project = builder.project
         uri = builder.uri_reference
-        _yum_fix_repo_priority(remote, project, uri)
-        _yum_fix_repo_host(remote, project)
-        _yum_set_check_obsoletes(remote)
+        #_yum_fix_repo_priority(remote, project, uri)
+        #_yum_fix_repo_host(remote, project)
+        #_yum_set_check_obsoletes(remote)
 
     if dist_release in ['opensuse', 'sle']:
         remote.run(args='sudo zypper clean -a')
