@@ -46,7 +46,8 @@ def verify_package_version(ctx, config, remote):
         return True
     builder = _get_builder_project(ctx, remote, config)
     version = builder.version
-    pkg_to_check = builder.project
+    pkg_to_check = "ceph"
+    log.info(version)
     installed_ver = packaging.get_package_version(remote, pkg_to_check)
     if installed_ver and version in installed_ver:
         msg = "The correct {pkg} version {ver} is installed.".format(
