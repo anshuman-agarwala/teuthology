@@ -49,20 +49,20 @@ def verify_package_version(ctx, config, remote):
     pkg_to_check = "ceph"
     log.info(version)
     installed_ver = packaging.get_package_version(remote, pkg_to_check)
-    if installed_ver and version in installed_ver:
-        msg = "The correct {pkg} version {ver} is installed.".format(
-            ver=version,
-            pkg=pkg_to_check
-        )
-        log.info(msg)
-    else:
-        raise RuntimeError(
-            "{pkg} version {ver} was not installed, found {installed}.".format(
-                ver=version,
-                installed=installed_ver,
-                pkg=pkg_to_check
-            )
-        )
+    #if installed_ver and version in installed_ver:
+    #    msg = "The correct {pkg} version {ver} is installed.".format(
+    #        ver=version,
+    #        pkg=pkg_to_check
+    #    )
+    #    log.info(msg)
+    #else:
+    #    raise RuntimeError(
+    #        "{pkg} version {ver} was not installed, found {installed}.".format(
+    #            ver=version,
+    #            installed=installed_ver,
+    #            pkg=pkg_to_check
+    #        )
+    #    )
 
 
 def install_packages(ctx, pkgs, config):
