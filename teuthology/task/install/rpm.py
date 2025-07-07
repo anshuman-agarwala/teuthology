@@ -403,9 +403,9 @@ def _upgrade_packages(ctx, config, remote, pkgs):
 
     if builder.dist_release not in ['opensuse', 'sle']:
         uri = builder.uri_reference
-        _yum_fix_repo_priority(remote, project, uri)
-        _yum_fix_repo_host(remote, project)
-        _yum_set_check_obsoletes(remote)
+        #_yum_fix_repo_priority(remote, project, uri)
+        #_yum_fix_repo_host(remote, project)
+        #_yum_set_check_obsoletes(remote)
 
     if builder.dist_release in ['opensuse', 'sle']:
         pkg_mng_cmd = 'zypper'
