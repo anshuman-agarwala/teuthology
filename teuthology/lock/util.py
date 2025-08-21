@@ -26,6 +26,7 @@ def vps_version_or_type_valid(machine_type, os_type, os_version):
         return True
     valid_os_and_version = \
         teuthology.provision.downburst.get_distro_from_downburst()
+    log.error("valid_os_version", valid_os_and_version.values())
     if os_type not in valid_os_and_version:
         log.error("os-type '%s' is invalid. Try one of: %s",
                   os_type,

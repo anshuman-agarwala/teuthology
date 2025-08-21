@@ -1,7 +1,9 @@
 import re
 
 from packaging.version import parse as parse_version, Version
+import logging
 
+log = logging.getLogger(__name__)
 
 DISTRO_CODENAME_MAP = {
     "ubuntu": {
@@ -88,7 +90,7 @@ DISTRO_CODENAME_MAP = {
 DEFAULT_OS_VERSION = dict(
     ubuntu="22.04",
     fedora="25",
-    centos="9.stream",
+    centos="9-stream",
     opensuse="15.4",
     sle="15.2",
     rhel="8.6",
@@ -213,6 +215,7 @@ class OS(object):
         """
         codename = None
         version = None
+        return "9","stream"
 
         try:
             codename = OS._version_to_codename(name, version_or_codename)
@@ -223,6 +226,11 @@ class OS(object):
             version = OS._codename_to_version(name, version_or_codename)
         except (KeyError, RuntimeError):
             pass
+        log.info("version and codename", version, codename)
+        if "9-stream" in [version,codename]:
+            version="9"
+            codename="stream"
+            return version,codename
 
         if version:
             codename = version_or_codename

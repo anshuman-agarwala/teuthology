@@ -128,6 +128,8 @@ class Downburst(object):
             args.extend(['-l', self.logfile])
         args.extend([
             'create',
+            '--nokey',
+            '--user-data=/root/downburst/doc/examples/fixed-password.user.yaml',
             '--wait',
             '--meta-data=%s' % self.config_path,
             '--user-data=%s' % self.user_path,
@@ -215,7 +217,7 @@ class Downburst(object):
             'distroversion': self.os_version,
             'additional-disks': machine['volumes']['count'],
             'additional-disks-size': machine['volumes']['size'],
-            'arch': 'x86_64',
+            'arch': 'ppc64le',
         }
         fqdn = self.name.split('@')[-1]
         file_out = {
@@ -300,7 +302,7 @@ def get_distro_from_downburst():
     default_table = {'rhel_minimal': ['6.4', '6.5'],
                      'fedora': ['17', '18', '19', '20', '22'],
                      'centos': ['6.3', '6.4', '6.5', '7.0',
-				 '7.2', '7.4', '8.2'],
+				 '7.2', '7.4', '8.2', '9-stream', '9'],
                      'centos_minimal': ['6.4', '6.5'],
                      'ubuntu': ['8.04(hardy)', '9.10(karmic)',
                                  '10.04(lucid)', '10.10(maverick)',

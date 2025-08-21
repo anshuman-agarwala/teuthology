@@ -83,7 +83,7 @@ jmespath==1.0.1
     # via
     #   boto3
     #   botocore
-lupa==2.2
+lupa==2.5
     # via teuthology (pyproject.toml)
 lxml==5.3.0
     # via teuthology (pyproject.toml)
