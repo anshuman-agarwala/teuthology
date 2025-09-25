@@ -244,7 +244,7 @@ def install_firmware(ctx, config):
         package_type = role_remote.os.package_type
         if package_type == 'rpm':
             role_remote.run(args=[
-                'sudo', 'yum', 'upgrade', '-y', 'linux-firmware',
+                'sudo', 'yum', 'install', '-y', 'linux-firmware',
             ])
             continue
         log.info('Installing linux-firmware on {role}...'.format(role=role))
@@ -1248,6 +1248,7 @@ def process_role(ctx, config, timeout, role, role_config):
     need_version = None  # utsrelease or sha1
 
     # gather information about this remote
+    log.info("inside process role")
     (role_remote,) = ctx.cluster.only(role).remotes.keys()
     system_type = role_remote.os.name
     if role_remote.is_container:
@@ -1258,6 +1259,7 @@ def process_role(ctx, config, timeout, role, role_config):
         # rpm: just happens to be parsed first.  Nothing is stopping
         # 'deb: /path/to/foo.rpm' and it will work provided remote's
         # os.package_type is 'rpm' and vice versa.
+        log.info("issue seems to be here")
         path = role_config.get('rpm')
         if not path:
             path = role_config.get('deb')
@@ -1316,6 +1318,10 @@ def process_role(ctx, config, timeout, role, role_config):
             need_install = build_info
             need_version = version
     else:
+        log.info("getting builder project")
+        log.info(role_config)
+        role_config["branch"]="squid"
+        log.info(role_config)
         builder = get_builder_project()(
             "kernel",
             role_config,
